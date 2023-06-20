@@ -13,35 +13,45 @@ def open_file():
     label = tk.Label(root, text="")
 
     # Lê o arquivo de texto e adiciona cada linha ao rótulo
-    with open(file_path, "r") as file:
+    with open(file_path, "r", encoding="utf-8") as file:
         for line in file:
             label["text"] += line
 
-    # Adiciona o rótulo à janela principal
     label.pack()
+
 
 # Função para executar o arquivo chamada.py em um novo terminal
 def run_chamada():
     subprocess.Popen(['x-terminal-emulator', '-e', 'python3 chamada.py'])
 
-# Função para executar o arquivo cadastro.py em um novo terminal
 def run_cadastro():
     subprocess.Popen(['x-terminal-emulator', '-e', 'python3 cadastro.py'])
 
+
 # Cria a janela principal
 root = tk.Tk()
+root.title("Controle de presença")
+root.geometry("400x300")  # Definir as dimensões da janela principal (largura x altura)
+
+# Definir cores
+button_bg = "#4369D4"  # Azul
+button_fg = "white"  # Branco
+
+frame = tk.Frame(root)
+frame.pack(pady=10)
+
 
 # Botão para visualizar alunos presentes
-btn_visualizar = tk.Button(root, text="Visualizar alunos presentes", command=open_file)
-btn_visualizar.pack()
+btn_visualizar = tk.Button(frame, text="Ver alunos presentes", command=open_file,
+                           bg=button_bg, fg=button_fg)
+btn_visualizar.pack(side=tk.LEFT, padx=10)  # Adicionar preenchimento horizontal
 
-# Botão para executar o arquivo chamada.py em um novo terminal
-btn_chamada = tk.Button(root, text="Chamada", command=run_chamada)
-btn_chamada.pack()
+btn_chamada = tk.Button(root, text="Chamada", command=run_chamada,
+                        bg=button_bg, fg=button_fg)
+btn_chamada.pack(pady=5)
 
-# Botão para executar o arquivo cadastro.py em um novo terminal
-btn_cadastrar = tk.Button(root, text="Cadastrar aluno", command=run_cadastro)
-btn_cadastrar.pack()
+btn_cadastrar = tk.Button(root, text="Cadastrar aluno", command=run_cadastro,
+                          bg=button_bg, fg=button_fg)
+btn_cadastrar.pack(pady=5)
 
-# Inicia o loop da interface gráfica
 root.mainloop()
