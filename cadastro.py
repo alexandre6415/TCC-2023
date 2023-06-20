@@ -18,7 +18,7 @@ def main():
 
     while True:
         # Solicitar que o cartão seja aproximado
-        print("Aproxime o cartão RFID para leitura...")
+        print("Aproxime a carteirinha para leitura...")
         id, _ = reader.read()
 
         # Verificar se o aluno já está presente no arquivo

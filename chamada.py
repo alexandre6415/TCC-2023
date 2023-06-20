@@ -8,7 +8,7 @@ import subprocess
 leitorRfid = SimpleMFRC522()
 ids_lidos = set()
 data_atual = datetime.now().strftime("%d-%m-%Y")
-nome_arquivo = f"rfid_{data_atual}.txt"
+nome_arquivo = f"Chamada_{data_atual}.txt"
 alunos_cadastrados = {}
 
 # Função para ler o arquivo de alunos cadastrados
@@ -56,7 +56,7 @@ try:
                 f.write(f"{matricula} - {nome} - {data_hora}\n")
             print(f"Informações do aluno {nome} salvas no arquivo '{nome_arquivo}'")
         else:
-            print(f"O cartão com ID {id} já foi lido anteriormente.")
+            print(f"O aluno {nome} já está presente.")
 
         # Verifica se mudou o dia e atualiza o nome do arquivo
         nova_data_atual = datetime.now().strftime("%d-%m-%Y")
